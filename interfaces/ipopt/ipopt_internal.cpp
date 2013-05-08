@@ -144,20 +144,8 @@ namespace CasADi{
     // Call the init method of the base class
     NLPSolverInternal::init();
     
-    // Get/generate required functions
-    gradF();
-    jacG();
-    switch(hess_mode_){
-    case HESS_EXACT:
-      hessLag();
-      break;
-    case HESS_BFGS:
-      break;
-    case HESS_GAUSS_NEWTON:
-      casadi_error("Gauss-Newton mode not supported");
-    }
-
     // Read user options
+    exact_hessian_ = getOption("hessian_approximation")=="exact";
 #ifdef WITH_SIPOPT
     if(hasSetOption("run_sens")){
       run_sens_ = getOption("run_sens")=="yes";
@@ -170,6 +158,13 @@ namespace CasADi{
       compute_red_hessian_ = false;
     }
 #endif // WITH_SIPOPT
+
+    // Get/generate required functions
+    gradF();
+    jacG();
+    if(exact_hessian_){
+      hessLag();
+    }
   
     // Start an IPOPT application
     Ipopt::SmartPtr<Ipopt::IpoptApplication> *app = new Ipopt::SmartPtr<Ipopt::IpoptApplication>();
@@ -195,8 +190,7 @@ namespace CasADi{
     *userclass = new IpoptUserClass(this);
   
     // read options
-    bool exact_hessian = hess_mode_ == HESS_EXACT;
-    if(exact_hessian){
+    if(exact_hessian_){
       setOption("hessian_approximation","exact");
     } else {
       setOption("hessian_approximation","limited-memory");
@@ -204,7 +198,7 @@ namespace CasADi{
   
     if(verbose_){
       cout << "There are " << nx_ << " variables and " << ng_ << " constraints." << endl;
-      if(exact_hessian) cout << "Using exact Hessian" << endl;
+      if(exact_hessian_) cout << "Using exact Hessian" << endl;
       else             cout << "Using limited memory Hessian approximation" << endl;
     }
  
@@ -698,7 +692,7 @@ namespace CasADi{
         nnz_jac_g = jacG().output().size();
 
       // Get Hessian sparsity pattern
-      if(hess_mode_==HESS_EXACT)
+      if(exact_hessian_)
         nnz_h_lag = hessLag().output().sparsity().sizeL();
       else
         nnz_h_lag = 0;
