@@ -704,8 +704,8 @@ namespace CasADi{
         int nv = 0;
       
         // Loop over the rows
-        const CRSSparsity& hessLagSparsity = this->hessLagSparsity();
-        const vector<int>& rowind = hessLagSparsity.rowind();
+        const CRSSparsity& spHessLag = this->spHessLag();
+        const vector<int>& rowind = spHessLag.rowind();
         for(int i=0; i<rowind.size()-1; ++i){
           // If the row contains any non-zeros, the corresponding variable appears nonlinearily
           if(rowind[i]!=rowind[i+1])
@@ -727,8 +727,8 @@ namespace CasADi{
       int el = 0;
     
       // Loop over the rows
-      const CRSSparsity& hessLagSparsity = this->hessLagSparsity();
-      const vector<int>& rowind = hessLagSparsity.rowind();
+      const CRSSparsity& spHessLag = this->spHessLag();
+      const vector<int>& rowind = spHessLag.rowind();
       for(int i=0; i<rowind.size()-1; ++i){
         // If the row contains any non-zeros, the corresponding variable appears nonlinearily
         if(rowind[i]!=rowind[i+1]){
