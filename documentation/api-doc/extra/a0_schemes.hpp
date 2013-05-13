@@ -144,12 +144,12 @@
 <tr><td>NLP_SOLVER_LAM_G0</td><td>Lagrange multipliers for bounds on G, initial guess (ng x 1) [lam_g0].</td></tr>
 </table>
 */
-/** \defgroup scheme_NLInput
+/** \defgroup scheme_NLPInput
 <table>
-<caption>Input scheme: CasADi::NLInput  (NL_NUM_IN = 2) </caption>
+<caption>Input scheme: CasADi::NLPInput  (NLP_NUM_IN = 2) </caption>
 <tr><th>Name</th><th>Description</th></tr>
-<tr><td>NL_X</td><td>Decision variable [x].</td></tr>
-<tr><td>NL_P</td><td>Fixed parameter [p].</td></tr>
+<tr><td>NLP_X</td><td>Decision variable [x].</td></tr>
+<tr><td>NLP_P</td><td>Fixed parameter [p].</td></tr>
 </table>
 */
 /** \defgroup scheme_ACADO_Output
@@ -162,12 +162,12 @@
 <tr><td>ACADO_COST</td><td>Optimal cost [cost].</td></tr>
 </table>
 */
-/** \defgroup scheme_NLOutput
+/** \defgroup scheme_NLPOutput
 <table>
-<caption>Output scheme: CasADi::NLOutput  (NL_NUM_OUT = 2) </caption>
+<caption>Output scheme: CasADi::NLPOutput  (NLP_NUM_OUT = 2) </caption>
 <tr><th>Name</th><th>Description</th></tr>
-<tr><td>NL_F</td><td>Objective function [f].</td></tr>
-<tr><td>NL_G</td><td>Constraint function [g].</td></tr>
+<tr><td>NLP_F</td><td>Objective function [f].</td></tr>
+<tr><td>NLP_G</td><td>Constraint function [g].</td></tr>
 </table>
 */
 /** \defgroup scheme_InputOutputScheme
@@ -185,8 +185,8 @@
 <tr><td>SCHEME_RDAEOutput</td><td></td></tr>
 <tr><td>SCHEME_IntegratorInput</td><td></td></tr>
 <tr><td>SCHEME_IntegratorOutput</td><td></td></tr>
-<tr><td>SCHEME_NLInput</td><td></td></tr>
-<tr><td>SCHEME_NLOutput</td><td></td></tr>
+<tr><td>SCHEME_NLPInput</td><td></td></tr>
+<tr><td>SCHEME_NLPOutput</td><td></td></tr>
 <tr><td>SCHEME_NLPSolverInput</td><td></td></tr>
 <tr><td>SCHEME_NLPSolverOutput</td><td></td></tr>
 <tr><td>SCHEME_MayerInput</td><td></td></tr>
@@ -214,8 +214,8 @@
 <tr><td>SCHEME_RDAEOutput</td><td></td></tr>
 <tr><td>SCHEME_IntegratorInput</td><td></td></tr>
 <tr><td>SCHEME_IntegratorOutput</td><td></td></tr>
-<tr><td>SCHEME_NLInput</td><td></td></tr>
-<tr><td>SCHEME_NLOutput</td><td></td></tr>
+<tr><td>SCHEME_NLPInput</td><td></td></tr>
+<tr><td>SCHEME_NLPOutput</td><td></td></tr>
 <tr><td>SCHEME_NLPSolverInput</td><td></td></tr>
 <tr><td>SCHEME_NLPSolverOutput</td><td></td></tr>
 <tr><td>SCHEME_MayerInput</td><td></td></tr>
