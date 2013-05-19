@@ -1,4 +1,4 @@
-cmake_minimum_required (VERSION 2.0)
+cmake_minimum_required (VERSION 2.6)
 
 # NOTE: you are not allowd to generate header files with configure_file in this module.
 # See https://github.com/casadi/casadi/issues/646
@@ -10,7 +10,9 @@ endif()
 
 # cmake_policy propagation rules
 if(COMMAND cmake_policy)
+if(POLICY CMP0011)
 cmake_policy(SET CMP0011 OLD)
+endif()
 endif()
 
 find_package(PythonLibs)

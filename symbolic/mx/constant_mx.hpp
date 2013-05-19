@@ -186,7 +186,6 @@ namespace CasADi{
 
     /// Get the value (only for scalar constant nodes)
     virtual double getValue() const{
-      casadi_assert(sparsity().scalar());
       return v_.value;
     }
 

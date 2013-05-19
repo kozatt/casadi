@@ -1957,5 +1957,13 @@ class MXtests(casadiTestCase):
     self.checkarray(f.output(),DMatrix([[3,6],[9,12]]))
     
     
+  def test_veccats(self):
+    x= msym("x",2)
+    self.assertTrue(hash(vec(x))==hash(x))
+    self.assertTrue(hash(vecNZ(x))==hash(x))
+    
+  def test_constmxmul(self):
+    0.1*MX.ones(2)
+    
 if __name__ == '__main__':
     unittest.main()
