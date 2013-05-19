@@ -40,12 +40,25 @@ namespace CasADi{
   class WorhpInternal : public NLPSolverInternal{
 
   public:
+    // Constructor
     explicit WorhpInternal(const FX& nlp);
+
+    // Destructor
     virtual ~WorhpInternal();
-    virtual WorhpInternal* clone() const{ return new WorhpInternal(*this);}
-  
+
+    // Clone function
+    virtual WorhpInternal* clone() const;
+
+    // Reset solver
+    void reset();
+
+    // (Re)initialize
     virtual void init();
+    
+    // Solve the NLP
     virtual void evaluate(int nfdir, int nadir);
+
+    
     virtual void setQPOptions();
 
     /// Read options from worhp parameter xml
